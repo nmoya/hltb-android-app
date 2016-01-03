@@ -48,6 +48,8 @@
             android:layout_marginTop="100dp"
             android:gravity="center"
             android:hint="Search for games ... "
+            android:inputType="textNoSuggestions"
+            android:singleLine="true"
             />
 
         <Button
