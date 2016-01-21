@@ -2,5 +2,5 @@
     <string name="app_name">How Long To Beat?</string>
 
     <string name="action_settings">Settings</string>
-    <string name="http_loading_dialog">Carregando. Por favor aguarde...</string>
+    <string name="http_loading_dialog">Loading. Please wait...</string>
 </resources>

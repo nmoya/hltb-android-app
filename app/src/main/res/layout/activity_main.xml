@@ -71,7 +71,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:gravity="center_horizontal"
-        android:text="Credits: http://howlongtobeat.com"
+        android:text="Non-commercial app for How Long To Beat! Made with love! All credits belong to: http://howlongtobeat.com"
         />
 
 
