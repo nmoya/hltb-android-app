@@ -1,4 +1,4 @@
-package com.nikolasmoya.hltb;
+package com.nikolasmoya.hltb.timeToBeat;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

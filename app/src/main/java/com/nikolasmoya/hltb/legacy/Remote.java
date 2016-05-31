@@ -1,4 +1,4 @@
-package com.nikolasmoya.hltb;
+package com.nikolasmoya.hltb.legacy;
 
 import android.os.AsyncTask;
 
@@ -7,35 +7,46 @@ import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 
-class Remote extends AsyncTask<String, Void, Document> {
+public class Remote extends AsyncTask<String, Void, Document>
+{
     private Exception exception;
     private HttpRequestListener _listener;
 
-    public Remote(HttpRequestListener listener) {
+    public Remote(HttpRequestListener listener)
+    {
         _listener = listener;
     }
 
-    protected Document doInBackground(String... urls) {
+    protected Document doInBackground(String... urls)
+    {
         Document doc = null;
-        if (urls.length != 2) {
+        if (urls.length != 2)
+        {
             return doc;
         }
         String url = urls[0];
         String queryString = urls[1];
-        if (queryString.isEmpty() || url.isEmpty()) {
+        if (queryString.isEmpty() || url.isEmpty())
+        {
             return doc;
         }
-        try {
+        try
+        {
             doc = Jsoup.connect(url).data("queryString", queryString).post();
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
-        } finally {
+        }
+        finally
+        {
             return doc;
         }
     }
 
     @Override
-    protected void onPostExecute(Document doc) {
+    protected void onPostExecute(Document doc)
+    {
         _listener.onHttpResponse(doc);
     }
 }

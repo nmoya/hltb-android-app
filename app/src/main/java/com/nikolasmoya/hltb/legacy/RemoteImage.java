@@ -1,4 +1,4 @@
-package com.nikolasmoya.hltb;
+package com.nikolasmoya.hltb.legacy;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

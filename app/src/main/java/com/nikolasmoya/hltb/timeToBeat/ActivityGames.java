@@ -1,4 +1,4 @@
-package com.nikolasmoya.hltb;
+package com.nikolasmoya.hltb.timeToBeat;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.nikolasmoya.hltb.R;
+import com.nikolasmoya.hltb.legacy.RemoteImage;
 
 import java.util.ArrayList;
 

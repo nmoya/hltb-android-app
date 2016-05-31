@@ -1,4 +1,4 @@
-package com.nikolasmoya.hltb;
+package com.nikolasmoya.hltb.timeToBeat;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.nikolasmoya.hltb.legacy.HttpRequestListener;
+import com.nikolasmoya.hltb.R;
+import com.nikolasmoya.hltb.legacy.*;
 
 import org.jsoup.nodes.Document;
 
