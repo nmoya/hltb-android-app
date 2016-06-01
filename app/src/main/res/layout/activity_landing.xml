@@ -5,21 +5,26 @@
               android:orientation="vertical"
     >
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        >
+    <ListView
+        android:id="@+id/landingItemsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        ></ListView>
+    <!--<ScrollView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--&gt;-->
 
-        <LinearLayout
-            android:id="@+id/landing_list_container"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:divider="#000"
-            android:dividerPadding="5dp"
-            android:orientation="vertical"
-            android:showDividers="middle"
-            ></LinearLayout>
+    <!--<LinearLayout-->
+    <!--android:id="@+id/landing_list_container"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:divider="#000"-->
+    <!--android:dividerPadding="5dp"-->
+    <!--android:orientation="vertical"-->
+    <!--android:showDividers="middle"-->
+    <!--&gt;</LinearLayout>-->
 
-    </ScrollView>
+    <!--</ScrollView>-->
 
 </LinearLayout>
