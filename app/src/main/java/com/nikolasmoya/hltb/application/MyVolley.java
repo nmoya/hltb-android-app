@@ -11,9 +11,14 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 import com.nikolasmoya.hltb.parsers.BaseParser;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+import org.jsoup.Jsoup;
+
+import java.io.IOException;
 
 public class MyVolley
 {
@@ -82,24 +87,80 @@ public class MyVolley
         view.setImageUrl(imgUrl, _imageLoader);
     }
 
-    public void get(String url, final BaseParser parser, final VolleyCallback callback)
+    public void get(String url, final BaseParser parser, Response.Listener callback)
     {
-        doRequest(Request.Method.GET, url, parser, callback);
+        doJsonRequest(Request.Method.GET, url, parser, callback, null);
     }
 
-    public void post(String url, final BaseParser parser, final VolleyCallback callback)
+    public void post(String url, final BaseParser parser, Response.Listener callback, Object requestBody)
     {
-        doRequest(Request.Method.POST, url, parser, callback);
+        doJsonRequest(Request.Method.POST, url, parser, callback, requestBody);
     }
 
-    public void doRequest(int requestType, String url, final BaseParser parser, final VolleyCallback callback)
+//    public void postString(String url, final BaseParser parser, Response.Listener callback, Map<String, String> requestBody)
+//    {
+//        doStringRequest(Request.Method.POST, url, parser, callback, requestBody);
+//    }
+
+    private JSONObject convertObjetToJson(Object body)
     {
-        JsonObjectRequest req = new JsonObjectRequest(requestType, url, null, new Response.Listener<JSONObject>()
+        JSONObject obj = null;
+        try
+        {
+            if (body != null)
+            {
+                obj = new JSONObject(new Gson().toJson(body));
+            }
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        return obj;
+    }
+//
+//    private void doStringRequest(int requestType, String url, final BaseParser parser, final Response.Listener callback, final Map<String, String> body)
+//    {
+//        StringRequest req = new StringRequest(requestType, url, new Response.Listener<String>()
+//        {
+//            @Override
+//            public void onResponse(String response)
+//            {
+//                callback.onResponse(parser.parse(response));
+//            }
+//        }, null)
+//        {
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError
+//            {
+//                return body == null ? super.getParams() : body;
+//            }
+//        };
+//        _requestQueue.add(req);
+//    }
+
+    public void doHLTBRequest(String url, String gameTitle, BaseParser parser, Response.Listener callback)
+    {
+        try
+        {
+            callback.onResponse(parser.parse(Jsoup.connect(url).data("queryString", gameTitle).post()));
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void doJsonRequest(int requestMethod, String url, final BaseParser parser, final Response.Listener callback, Object requestBody)
+    {
+
+        JsonObjectRequest req = new JsonObjectRequest(requestMethod, url, convertObjetToJson(requestBody), new Response.Listener<JSONObject>()
         {
             @Override
             public void onResponse(JSONObject response)
             {
-                callback.onDone(parser.parse(response));
+                callback.onResponse(parser.parse(response));
             }
         }, null);
         _requestQueue.add(req);

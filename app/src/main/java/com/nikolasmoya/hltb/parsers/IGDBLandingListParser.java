@@ -13,23 +13,27 @@ public class IGDBLandingListParser extends BaseParser<IGDBLandingItem[]>
     @Override
     public IGDBLandingItem[] parse(JSONObject response)
     {
-        ArrayList<IGDBLandingItem> games = new ArrayList<>();
-        try
+        if (response.length() > 0)
         {
-            JSONArray jsonList = response.getJSONArray("games");
-            for (int i = 0; i < jsonList.length(); i++)
+            ArrayList<IGDBLandingItem> games = new ArrayList<>();
+            try
             {
-                JSONObject obj = jsonList.getJSONObject(i);
-                IGDBLandingItemParser itemParser = new IGDBLandingItemParser();
-                games.add(itemParser.parse(obj));
+                JSONArray jsonList = response.getJSONArray("games");
+                for (int i = 0; i < jsonList.length(); i++)
+                {
+                    JSONObject obj = jsonList.getJSONObject(i);
+                    IGDBLandingItemParser itemParser = new IGDBLandingItemParser();
+                    games.add(itemParser.parse(obj));
+                }
             }
+            catch (JSONException e)
+            {
+                e.printStackTrace();
+            }
+            IGDBLandingItem[] list = new IGDBLandingItem[games.size()];
+            list = games.toArray(list);
+            return list;
         }
-        catch (JSONException e)
-        {
-            e.printStackTrace();
-        }
-        IGDBLandingItem[] list = new IGDBLandingItem[games.size()];
-        list = games.toArray(list);
-        return list;
+        return null;
     }
 }

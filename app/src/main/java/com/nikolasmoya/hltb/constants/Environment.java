@@ -5,7 +5,10 @@ public class Environment
     public static final String IGDB_BASE_URL = "https://www.igdb.com/api/v1/";
     public static final String IGDB_APP_KEY = "COi3U73j9ZTnz-ZtND0LCvf67Ki2_gqw0QcIPL500ZU";
     public static final String IGDB_COVER_BASE = "https://res.cloudinary.com/igdb/image/upload/t_cover_big_2x/";
-    public static final String IGDB_LANDING_SUFFIX = "games/search?limit=50&filters[platforms.id_eq]=48&filters[release_date_gt]=2015-12-31&filters[release_date_lt]=2016-05-15&token=" + IGDB_APP_KEY;
+    public static final String IGDB_LANDING = IGDB_BASE_URL + "games/search?limit=50&filters[platforms.id_eq]=48&filters[release_date_gt]=2015-12-31&filters[release_date_lt]=2016-05-15&token=" + IGDB_APP_KEY;
+
+    public static final String HLTB_BASE_URL = "http://howlongtobeat.com/";
+    public static final String HLTB_SEARCH_URL = "http://howlongtobeat.com/search_main.php?page=1";
 
     public static String append(String base, String... suffixes)
     {

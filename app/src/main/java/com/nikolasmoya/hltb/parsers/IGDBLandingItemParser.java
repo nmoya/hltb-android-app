@@ -35,4 +35,5 @@ public class IGDBLandingItemParser extends BaseParser<IGDBLandingItem>
         return new IGDBLandingItem(id, name, releaseDate, cover, coverId);
     }
 
+
 }
