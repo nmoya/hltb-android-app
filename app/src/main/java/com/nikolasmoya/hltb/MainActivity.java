@@ -39,7 +39,7 @@ public class MainActivity extends Activity implements HttpRequestListener, View.
         String queryString = query.getText().toString();
         if (queryString.length() > 0)
         {
-            new Remote(this).execute("http://howlongtobeat.com/search_main.php?page=1", queryString);
+            new Remote(this).execute("https://howlongtobeat.com/search_main.php?page=1", queryString);
             _dialog.show();
         }
     }
