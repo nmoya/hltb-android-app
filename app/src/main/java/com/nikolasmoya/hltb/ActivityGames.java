@@ -6,9 +6,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.android.volley.toolbox.NetworkImageView;
 
 import java.util.ArrayList;
 
@@ -54,8 +55,8 @@ public class ActivityGames extends Activity
         for (Game g : games)
         {
             View v = inflater.inflate(R.layout.inflate_entry, null, false);
-            ImageView cover = (ImageView) v.findViewById(R.id.img_gameCover);
-            new RemoteImage(cover).execute(g.getImgSrc());
+            NetworkImageView cover = (NetworkImageView) v.findViewById(R.id.img_gameCover);
+            cover.setImageUrl(g.getImgSrc(), VolleySingleton.getInstance(this).getImageLoader());
 
             TextView title = (TextView) v.findViewById(R.id.txt_title);
             title.setText(g.getTitle());

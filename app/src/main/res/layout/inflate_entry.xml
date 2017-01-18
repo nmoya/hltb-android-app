@@ -6,7 +6,7 @@
               android:padding="15dp"
     >
 
-    <ImageView
+    <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/img_gameCover"
         android:layout_width="120dp"
         android:layout_height="173dp"
