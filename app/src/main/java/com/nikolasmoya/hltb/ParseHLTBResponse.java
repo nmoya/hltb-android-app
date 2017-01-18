@@ -9,12 +9,13 @@ import java.util.ArrayList;
 public class ParseHLTBResponse
 {
 
-    private static String baseUrl = "http://howlongtobeat.com/";
+    private static String baseUrl = "https://howlongtobeat.com/";
     Document _doc;
 
     ParseHLTBResponse(Document doc)
     {
         _doc = doc;
+
     }
 
     ArrayList<Game> deserialize()
